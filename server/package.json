@@ -1,0 +1,23 @@
+{
+  "name": "connectify-server",
+  "version": "1.0.0",
+  "description": "Connectify is a social media platform that connects people from all around the world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProkingK/Connectify.git"
+  },
+  "keywords": [
+    "social",
+    "media"
+  ],
+  "author": "Ashley Kapaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProkingK/Connectify/issues"
+  },
+  "homepage": "https://github.com/ProkingK/Connectify#readme"
+}
