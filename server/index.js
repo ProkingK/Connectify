@@ -6,8 +6,10 @@ import multer from "multer"
 import morgan from "morgan";
 import express from "express";
 import mongoose from "mongoose";
-import { fileURLToPath } from "url";
+
 import { error } from "console";
+import { fileURLToPath } from "url";
+import { register } from "./controllers/auth.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -35,6 +37,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+/*  ROUTES WITH FILES */
+app.post("/auth/register", upload.single("picture", register));
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
