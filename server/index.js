@@ -25,8 +25,6 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
-const upload = multer({ storage });
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "public/assets");
@@ -35,6 +33,8 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
+
+const upload = multer({ storage });
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
