@@ -7,6 +7,7 @@ import morgan from "morgan";
 import express from "express";
 import mongoose from "mongoose";
 import { fileURLToPath } from "url";
+import { error } from "console";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -34,3 +35,13 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
+
+/* MONGOOSE SETUP */
+const PORT = process.env.PORT || 6001;
+
+mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+        app.listen(PORT, () => console.log(`Server running on Port: ${PORT}`));
+    })
+    .catch((error) => console.log(`Failed to connect to database \n Error: \n ${error}`));
