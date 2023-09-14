@@ -7,14 +7,14 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { Formik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Formik } from "formik";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -70,6 +70,7 @@ const Form = () => {
         body: formData,
       }
     );
+
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
@@ -84,8 +85,10 @@ const Form = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
+
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
+    
     if (loggedIn) {
       dispatch(
         setLogin({
